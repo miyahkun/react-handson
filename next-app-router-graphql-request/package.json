@@ -13,6 +13,7 @@
     "@types/node": "20.2.5",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
+    "defu": "^6.1.2",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
     "graphql": "^16.6.0",
@@ -26,6 +27,7 @@
     "@graphql-codegen/cli": "4.0.0",
     "@graphql-codegen/client-preset": "4.0.0",
     "@graphql-codegen/introspection": "4.0.0",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "msw": "^1.2.1"
   }
 }
