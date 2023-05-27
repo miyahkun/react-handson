@@ -1,0 +1,31 @@
+{
+  "name": "next-app-router-graphql-request",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "codegen": "graphql-codegen --config codegen.ts"
+  },
+  "dependencies": {
+    "@types/node": "20.2.5",
+    "@types/react": "18.2.7",
+    "@types/react-dom": "18.2.4",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.4",
+    "graphql": "^16.6.0",
+    "graphql-request": "^6.1.0",
+    "next": "13.4.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "^5.1.0-beta"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "4.0.0",
+    "@graphql-codegen/client-preset": "4.0.0",
+    "@graphql-codegen/introspection": "4.0.0",
+    "dotenv": "^16.0.3"
+  }
+}
