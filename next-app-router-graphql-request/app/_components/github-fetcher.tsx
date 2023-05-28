@@ -1,25 +1,9 @@
-import { useCallback, useMemo, type FC } from "react";
-import { GraphQLClient } from "graphql-request";
-import { GRAPHQL_ENDPOINT } from "@/src/constants";
-import { userQueryDocument } from "@/src/getUser";
-import { defu } from "defu";
-
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-
-const createClient = (init?: RequestInit) => {
-  return new GraphQLClient(GRAPHQL_ENDPOINT, {
-    fetch: (...args) => {
-      return fetch(args[0], defu(init, args[1]));
-    },
-    headers: {
-      authorization: `Bearer ${GITHUB_TOKEN}`,
-    },
-  });
-};
+import Image from "next/image";
+import { userQueryDocument } from "@/src/gql/operations/getUser";
+import { useGraphQLClient } from "@/src/gql/client";
 
 export const GitHubFetcher = async () => {
-  const client = useMemo(() => createClient({ next: { revalidate: 5 } }), []);
-
+  const client = useGraphQLClient({ next: { revalidate: 5 } });
   const data = await client.request(userQueryDocument);
 
   let datetime = "";
@@ -47,6 +31,21 @@ export const GitHubFetcher = async () => {
     <>
       <h1>GitHubFetcher</h1>
 
+      <div>
+        Twitter: <pre>{data.user?.twitterUsername}</pre>
+      </div>
+      <div>
+        Avatar:{" "}
+        <div>
+          <Image
+            width={200}
+            height={200}
+            src={data.user?.avatarUrl}
+            alt="avatar image"
+            unoptimized
+          />
+        </div>
+      </div>
       <div>Company: {data.user?.company}</div>
       <div>DateTime: {datetime}</div>
     </>
